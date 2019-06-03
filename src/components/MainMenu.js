@@ -2,6 +2,7 @@ import React from 'react';
 import {graphql, StaticQuery, Link}  from 'gatsby';
 import styled from 'styled-components';
 import SiteInfo from './SiteInfo';
+import Logo from './Logo';
 
 const MainMenuWrapper = styled.div`
 display :flex;
@@ -44,9 +45,11 @@ const MainMenu = () => (
 `} render={props => (
     <MainMenuWrapper>
     <MainMenuInner>
-        <SiteInfo />
+
+        <Logo/>
+        <SiteInfo />        
         {props.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
-          <MenuItem to={item.object_slug} key={item.title}>
+          <MenuItem to={`/${item.object_slug}`} key={item.title}>
             {item.title}
          </MenuItem> 
         ))} 
